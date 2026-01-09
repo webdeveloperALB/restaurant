@@ -1,0 +1,17 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.debug.settings.onBuildFailureProceed": true,
+    "maven.view": "hierarchical",
+    "spring-boot.ls.checkJVM": true,
+    "spring.initializr.defaultLanguage": "Java",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "editor.formatOnSave": true,
+    "java.format.settings.url": "",
+    "java.saveActions.organizeImports": true
+}

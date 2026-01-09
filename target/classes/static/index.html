@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemi i Menaxhimit Universitar - UMIS</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="auth-container" class="auth-container">
+        <div class="auth-wrapper">
+            <div class="auth-sidebar">
+                <div class="auth-brand">
+                    <div class="brand-logo">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="url(#gradient)"/>
+                            <path d="M30 15L20 25V45H25V35H35V45H40V25L30 15Z" fill="white"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0" y1="0" x2="60" y2="60">
+                                    <stop offset="0%" stop-color="#1e40af"/>
+                                    <stop offset="100%" stop-color="#3b82f6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h1>UMIS</h1>
+                    <p>University Management<br>Information System</p>
+                </div>
+                <div class="auth-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">📚</span>
+                        <span>Menaxhim i Plotë Akademik</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">👨‍🏫</span>
+                        <span>CRM për Pedagogë</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎓</span>
+                        <span>Portal për Studentë</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <span>Analiza dhe Raportim</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-main">
+                <div id="login-form" class="auth-form active">
+                    <div class="form-header">
+                        <h2>Kyçuni në sistem</h2>
+                        <p>Mirë se vini përsëri! Ju lutemi vendosni kredencialet tuaja.</p>
+                    </div>
+
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" name="email" required
+                                   placeholder="example@university.edu.al">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="login-password">Fjalëkalimi</label>
+                            <input type="password" id="login-password" name="password" required
+                                   placeholder="••••••••">
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember">
+                                <span>Më kujto</span>
+                            </label>
+                            <a href="#" class="link">Keni harruar fjalëkalimin?</a>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-full">Kyçu</button>
+
+                        <div class="form-footer">
+                            <p>Nuk keni llogari? <a href="#" onclick="showRegisterForm(event)" class="link">Regjistrohu këtu</a></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="register-form" class="auth-form">
+                    <div class="form-header">
+                        <h2>Krijoni llogari të re</h2>
+                        <p>Plotësoni të dhënat tuaja për të krijuar një llogari.</p>
+                    </div>
+
+                    <form onsubmit="handleRegister(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="register-emri">Emri</label>
+                                <input type="text" id="register-emri" name="emri" required
+                                       placeholder="Emri">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="register-mbiemri">Mbiemri</label>
+                                <input type="text" id="register-mbiemri" name="mbiemri" required
+                                       placeholder="Mbiemri">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" name="email" required
+                                   placeholder="example@university.edu.al">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-password">Fjalëkalimi</label>
+                            <input type="password" id="register-password" name="password" required
+                                   minlength="8" placeholder="Të paktën 8 karaktere">
+                            <small class="form-help">Minimumi 8 karaktere</small>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="register-telefoni">Telefoni</label>
+                                <input type="tel" id="register-telefoni" name="telefoni"
+                                       placeholder="+355 XX XXX XXXX">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="register-data-lindjes">Data e Lindjes</label>
+                                <input type="date" id="register-data-lindjes" name="dataLindjes">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-adresa">Adresa</label>
+                            <input type="text" id="register-adresa" name="adresa"
+                                   placeholder="Adresa e plotë">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-roli">Roli</label>
+                            <select id="register-roli" name="roli" required>
+                                <option value="student">Student</option>
+                                <option value="pedagog">Pedagog</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-full">Regjistrohu</button>
+
+                        <div class="form-footer">
+                            <p>Keni tashmë llogari? <a href="#" onclick="showLoginForm(event)" class="link">Kyçuni këtu</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-container" class="app-container" style="display: none;">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-logo-small">
+                    <svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="60" height="60" rx="12" fill="url(#gradient2)"/>
+                        <path d="M30 15L20 25V45H25V35H35V45H40V25L30 15Z" fill="white"/>
+                        <defs>
+                            <linearGradient id="gradient2" x1="0" y1="0" x2="60" y2="60">
+                                <stop offset="0%" stop-color="#1e40af"/>
+                                <stop offset="100%" stop-color="#3b82f6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h2>UMIS</h2>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Paneli Kryesor</span>
+                </a>
+                <a href="#" class="nav-item" data-page="students">
+                    <span class="nav-icon">🎓</span>
+                    <span>Studentët</span>
+                </a>
+                <a href="#" class="nav-item" data-page="courses">
+                    <span class="nav-icon">📚</span>
+                    <span>Kurset</span>
+                </a>
+                <a href="#" class="nav-item" data-page="attendance">
+                    <span class="nav-icon">✅</span>
+                    <span>Prania</span>
+                </a>
+                <a href="#" class="nav-item" data-page="assignments">
+                    <span class="nav-icon">📝</span>
+                    <span>Detyrat</span>
+                </a>
+                <a href="#" class="nav-item" data-page="grades">
+                    <span class="nav-icon">📈</span>
+                    <span>Notat</span>
+                </a>
+                <a href="#" class="nav-item" data-page="messages">
+                    <span class="nav-icon">💬</span>
+                    <span>Mesazhet</span>
+                </a>
+                <a href="#" class="nav-item" data-page="announcements">
+                    <span class="nav-icon">📢</span>
+                    <span>Njoftimet</span>
+                </a>
+                <a href="#" class="nav-item" data-page="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Cilësimet</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <span id="user-initials">U</span>
+                    </div>
+                    <div class="user-info">
+                        <p class="user-name" id="user-display-name">Përdoruesi</p>
+                        <p class="user-role" id="user-display-role">Student</p>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="handleLogout()">
+                    <span>🚪</span>
+                    Dil
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="app-header">
+                <h1 id="page-title">Paneli Kryesor</h1>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Njoftime">
+                        <span class="notification-badge">3</span>
+                        🔔
+                    </button>
+                    <button class="btn-icon" title="Profili">
+                        👤
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-wrapper" id="main-content">
+                <div id="dashboard-page" class="page active">
+                    <div class="welcome-card">
+                        <h2>Mirë se vini, <span id="welcome-name"></span>!</h2>
+                        <p>Këtu mund të gjeni një përmbledhje të aktiviteteve tuaja akademike.</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-details">
+                                <h3>Kurset</h3>
+                                <p class="stat-value" id="stat-courses">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📝</div>
+                            <div class="stat-details">
+                                <h3>Detyrat</h3>
+                                <p class="stat-value" id="stat-assignments">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-details">
+                                <h3>Prania</h3>
+                                <p class="stat-value" id="stat-attendance">--</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-details">
+                                <h3>Mesatarja</h3>
+                                <p class="stat-value" id="stat-gpa">--</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h3>Aktiviteti i Fundit</h3>
+                        <div id="recent-activity-list" class="activity-list">
+                            <p class="no-data">Nuk ka aktivitete të fundit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="students-page" class="page" style="display: none;">
+                    <h2>Menaxhimi i Studentëve</h2>
+                    <p>Përmbajtja e studentëve do të shfaqet këtu...</p>
+                </div>
+
+                <div id="courses-page" class="page" style="display: none;">
+                    <h2>Kurset</h2>
+                    <p>Lista e kurseve do të shfaqet këtu...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
